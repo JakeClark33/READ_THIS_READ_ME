@@ -1,4 +1,5 @@
-
+const generatePage = (projectType, projectName) => {
+    return `
     <!DOCTYPE html> 
     <html lang="en"> 
     <head>
@@ -9,8 +10,10 @@
     </head>
 
     <body>
-    <h1>Jack</h1>
-    <h2>Jill</h2>
+    <h1>${projectType}</h1>
+    <h2>${projectName}</h2>
   </body>
   </html>
-  
+  `;
+};
+module.exports = generatePage;

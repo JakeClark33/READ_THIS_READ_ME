@@ -1,24 +1,12 @@
 const fs = require('fs');
-const pageDataArgs = process.argv.slice(2, process.argv.length);
-const [projectType, projectName] = pageDataArgs;
-const generatePage = (name, github) => {
-    return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
-    </head>
 
-    <body>
-    <h1>${projectType}</h1>
-    <h2>${projectName}</h2>
-  </body>
-  </html>
-  `;
-};
+const generatePage = require('./src/page-template.js');
+
+const pageDataArgs = process.argv.slice(2);
+
+const [projectType, projectName] = pageDataArgs;
+
+
 fs.writeFile('index.html', generatePage(projectType, projectName), err => {
     if (err) throw err;
   
