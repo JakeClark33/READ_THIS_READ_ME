@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 
+<<<<<<< HEAD
 inquirer
     .prompt ([
         {
@@ -18,6 +19,55 @@ inquirer
 //  const fs = require('fs');
 
 //  const generatePage = require('./src/page-template');
+=======
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'Project Type',
+      message: 'What type of Project are you creating?'
+    },
+    {
+    type: 'input',
+    name: 'Project Name',
+    message: 'What is the name of your project?'
+    }
+  ]);
+};
+
+promptUser() 
+.then(answers => console.log(answers))
+.then(promptDescription)
+.then(descriptionAnswers => console.log(descriptionAnswers));
+
+
+const promptDescription = () => {
+console.log(`
+  
+  ================================================================
+  Description
+  ================================================================
+
+  `);
+  return inquirer.prompt([
+    {
+    type: 'input',
+    Name: 'description',
+    message: 'Please provide a detailed description of your project. (Required)'  
+    },
+  ]);
+};
+
+// const fs = require('fs');
+
+// const generatePage = require('./src/page-template');
+
+// fs.writeFile('index.html', generatePage(projectType, projectName), err => {
+//     if (err) throw err;
+  
+//     console.log('README complete! Check out index.html to see the output!');
+//   });
+>>>>>>> feature/questions
 
 // const pageHTML = generatePage(projectType, projectName);
 
