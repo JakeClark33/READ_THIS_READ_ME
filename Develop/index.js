@@ -1,29 +1,52 @@
-const fs = require('fs');
-const pageDataArgs = process.argv.slice(2, process.argv.length);
-const [projectType, projectName] = pageDataArgs;
-const generatePage = (name, github) => {
-    return `
-    <!DOCTYPE html> 
-    <html lang="en"> 
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
-    </head>
+const inquirer = require('inquirer');
 
-    <body>
-    <h1>${projectType}</h1>
-    <h2>${projectName}</h2>
-  </body>
-  </html>
-  `;
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'Project Type',
+      message: 'What type of Project are you creating?'
+    },
+    {
+    type: 'input',
+    name: 'Project Name',
+    message: 'What is the name of your project?'
+    }
+  ]);
 };
-fs.writeFile('index.html', generatePage(projectType, projectName), err => {
-    if (err) throw err;
+
+promptUser() 
+.then(answers => console.log(answers))
+.then(promptDescription)
+.then(descriptionAnswers => console.log(descriptionAnswers));
+
+
+const promptDescription = () => {
+console.log(`
   
-    console.log('README complete! Check out index.html to see the output!');
-  });
+  ================================================================
+  Description
+  ================================================================
+
+  `);
+  return inquirer.prompt([
+    {
+    type: 'input',
+    Name: 'description',
+    message: 'Please provide a detailed description of your project. (Required)'  
+    },
+  ]);
+};
+
+// const fs = require('fs');
+
+// const generatePage = require('./src/page-template');
+
+// fs.writeFile('index.html', generatePage(projectType, projectName), err => {
+//     if (err) throw err;
+  
+//     console.log('README complete! Check out index.html to see the output!');
+//   });
 
 
 
