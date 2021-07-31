@@ -18,10 +18,6 @@ const promptUser = () => {
   
 };
 
- 
-
-
-
 
 
 const promptDescription = () => {
@@ -56,41 +52,176 @@ const promptToc = tocData => {
     return inquirer.prompt([
       {
       type: 'input',
-      name: 'table of contents heading',
-      message: 'Please provide a section heading for your Table Of Contents'  
+      name: 'SECTION',
+      message: 'Please provide a section heading for your Table Of Contents.'  
       },
       {
         type: 'confirm',
-      name: 'addHeading',
+      name: 'confirmAddHeading',
       message: 'Would you like to enter another Table Of Contents heading?',
       default: false
       }
 
     ])
     .then (headingData => {
-      tocData.push(headingData)
-      if(confirmAddHeading === true) {
+      tocData.push(headingData);
+    if(headingData.confirmAddHeading === true) {
         return promptToc(tocData);
       }else {
         return tocData;
       }
-    })
-    
+    });
   };
+  const promptInstall = () =>{
+    console.log(`
+  
+      ================================================================
+      Installation Instructions
+      ================================================================
+    
+      `);
+  
+      return inquirer.prompt([
+        {
+        type: 'input',
+        name: 'Installation Instructions',
+        message: 'Please provide detailed instructions on how to install and run your project.(Required)'  
+        },
+      ])
+     
+    } 
+    const promptUsage = () =>{
+      console.log(`
+    
+        ================================================================
+        Usage
+        ================================================================
+      
+        `);
+    
+        return inquirer.prompt([
+          {
+          type: 'input',
+          name: 'Usage',
+          message: 'Please provide detailed instructions on how to use your project.(Required)'  
+          },
+        ])
+       
+      } 
 
+      const promptContributors = () =>{
+        console.log(`
+      
+          ================================================================
+          Contributing
+          ================================================================
+        
+          `);
+      
+          return inquirer.prompt([
+            {
+            type: 'input',
+            name: 'Usage',
+            message: 'Please provide detailed references and contributors to this project.(Required)'  
+            },
+          ])
+         
+        } 
 
+        const promptTests = () =>{
+          console.log(`
+        
+            ================================================================
+            Tests
+            ================================================================
+          
+            `);
+        
+            return inquirer.prompt([
+              {
+              type: 'input',
+              name: 'Tests',
+              message: 'Please provide detailed explanation of any testing that was completed on this project.(Required)'  
+              },
+            ])
+           
+          }   
 
+          
+        const promptQuestions = () =>{
+          console.log(`
+        
+            ================================================================
+            Questions
+            ================================================================
+          
+            `);
+        
+            return inquirer.prompt([
+              {
+              type: 'input',
+              name: 'gitHub', 
+              message: 'Please enter your GitHub username.(Required)'  
+              },
+              {
+                type: 'input',
+                name: 'email address', 
+                message: 'Please enter a valid email address.(Required)'
+              },
+              {
+                type: 'input',
+                name:'contact', 
+                message: 'How else can you be contacted with additional questions regarding your project?(Required)'
+              }
 
+            ])
+           
+          }   
 
-promptUser()
+          const promptLicense = () =>{
+            console.log(`
+          
+              ================================================================
+              License
+              ================================================================
+            
+              `);
+          
+              return inquirer.prompt([
+                {
+                type: 'input',
+                name: 'License',
+                message: 'Which license is your project currently using?.(Required)'  
+                },
+              ])
+             
+            }    
+  promptUser()
   .then(answers => console.log(answers))
   .then(promptDescription)
   .then(descriptionAnswers => console.log(descriptionAnswers))
   .then(promptToc)
   .then(tocData => 
-    console.log(tocData));
-   
-  
+    console.log(tocData))
+    .then(promptInstall)
+    .then(installData => 
+      console.log(installData))
+      .then(promptUsage)
+      .then(usageData => 
+        console.log(usageData))
+        .then(promptContributors)
+      .then(contributorData => 
+        console.log(contributorData))
+        .then(promptTests)
+        .then(TestData => 
+          console.log(TestData))
+          .then(promptQuestions)
+        .then(QuestionData => 
+          console.log(QuestionData))
+          .then(promptLicense)
+        .then(LicenseData => 
+          console.log(LicenseData));
+
 // const fs = require('fs');
 
 // const generatePage = require('./src/page-template');
