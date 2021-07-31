@@ -61,15 +61,15 @@ const promptToc = tocData => {
       },
       {
         type: 'confirm',
-      name: 'confirmAddHeading',
+      name: 'addHeading',
       message: 'Would you like to enter another Table Of Contents heading?',
       default: false
       }
 
     ])
     .then (headingData => {
-      tocData.push(headingData);
-      if(tocData.confirmAddproject === true) {
+      tocData.push(headingData)
+      if(confirmAddHeading === true) {
         return promptToc(tocData);
       }else {
         return tocData;
