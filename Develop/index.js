@@ -1,27 +1,8 @@
 const inquirer = require('inquirer');
 
-<<<<<<< HEAD
-inquirer
-    .prompt ([
-        {
-            type: 'input',
-            name: 'Project type',
-            message: 'What type of document and you creating?'
-        },
-        {
-            type: 'input',
-            name: 'Project Name',
-            message: 'Please enter the name of your project(Required)'
-        }
-    ])
-    .then(answers => console.log(answers));
-
-//  const fs = require('fs');
-
-//  const generatePage = require('./src/page-template');
-=======
 const promptUser = () => {
-  return inquirer.prompt([
+  return inquirer.prompt
+  ([
     {
       type: 'input',
       name: 'Project Type',
@@ -31,14 +12,16 @@ const promptUser = () => {
     type: 'input',
     name: 'Project Name',
     message: 'What is the name of your project?'
-    }
-  ]);
+    },
+   
+  ])
+  
 };
 
-promptUser() 
-.then(answers => console.log(answers))
-.then(promptDescription)
-.then(descriptionAnswers => console.log(descriptionAnswers));
+ 
+
+
+
 
 
 const promptDescription = () => {
@@ -52,12 +35,62 @@ console.log(`
   return inquirer.prompt([
     {
     type: 'input',
-    Name: 'description',
+    name: 'description',
     message: 'Please provide a detailed description of your project. (Required)'  
-    },
+    }
+    
   ]);
 };
 
+const promptToc = tocData => {
+  if (!tocData) {
+  tocData = [];
+  }
+  console.log(`
+    
+    ================================================================
+    Table Of Contents
+    ================================================================
+  
+    `);
+    return inquirer.prompt([
+      {
+      type: 'input',
+      name: 'table of contents heading',
+      message: 'Please provide a section heading for your Table Of Contents'  
+      },
+      {
+        type: 'confirm',
+      name: 'confirmAddHeading',
+      message: 'Would you like to enter another Table Of Contents heading?',
+      default: false
+      }
+
+    ])
+    .then (headingData => {
+      tocData.push(headingData);
+      if(tocData.confirmAddproject === true) {
+        return promptToc(tocData);
+      }else {
+        return tocData;
+      }
+    })
+    
+  };
+
+
+
+
+
+promptUser()
+  .then(answers => console.log(answers))
+  .then(promptDescription)
+  .then(descriptionAnswers => console.log(descriptionAnswers))
+  .then(promptToc)
+  .then(tocData => 
+    console.log(tocData));
+   
+  
 // const fs = require('fs');
 
 // const generatePage = require('./src/page-template');
@@ -67,7 +100,6 @@ console.log(`
   
 //     console.log('README complete! Check out index.html to see the output!');
 //   });
->>>>>>> feature/questions
 
 // const pageHTML = generatePage(projectType, projectName);
 
