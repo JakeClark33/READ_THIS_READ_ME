@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 
+const generatePage = require('./src/page-template.js');
 const promptUser = () => {
   return inquirer.prompt
   ([
@@ -311,14 +313,19 @@ const promptToc = tocData => {
         .then(QuestionData => 
           console.log(QuestionData))
           .then(promptLicense)
-        .then(LicenseData => 
-          console.log(LicenseData));
+        .then(LicenseData => {
+          const pageMd = generatePage(LicenseData);
+        
+          fs.writeFile('./src/page-template.js', pageMd, err => {
+            if (err) throw new Error(err);
+     
+            console.log('Page created! Check out index.html in this directory to see it!');
+          });
 
-// const fs = require('fs');
 
-// const generatePage = require('./src/page-template');
-
-// fs.writeFile('index.html', generatePage(projectType, projectName), err => {
+        }
+        
+        // fs.writeFile('index.html', generatePage(projectType, projectName), err => {
 //     if (err) throw err;
   
 //     console.log('README complete! Check out index.html to see the output!');
@@ -443,7 +450,4 @@ const promptToc = tocData => {
 // // TODO: Create a function to initialize app
 // //function initialize() {}
 
-
-// // Function call to initialize app
-// init();
-//             }
+        )
