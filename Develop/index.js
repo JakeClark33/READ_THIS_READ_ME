@@ -6,13 +6,33 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'Project Type',
-      message: 'What type of Project are you creating?'
+      message: 'What type of document are you creating?',
+      validate: nameInput => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log('Please enter your document type!');
+          return false;
+        }
+      }
     },
+    
+    
     {
     type: 'input',
     name: 'Project Name',
-    message: 'What is the name of your project?'
-    },
+    message: 'What is the name of your project?',
+    validate: projectInput => {
+      if (projectInput) {
+        return true;
+      } else {
+        console.log('Please enter your project name!');
+        return false;
+      }    
+    }
+
+    
+    }
    
   ])
   
@@ -32,7 +52,15 @@ console.log(`
     {
     type: 'input',
     name: 'description',
-    message: 'Please provide a detailed description of your project. (Required)'  
+    message: 'Please provide a detailed description of your project. (Required)' ,
+    validate: descriptionInput => {
+      if (descriptionInput) {
+        return true;
+      } else {
+        console.log('Please provide a description of your project!');
+        return false;
+      }
+    } 
     }
     
   ]);
@@ -53,7 +81,15 @@ const promptToc = tocData => {
       {
       type: 'input',
       name: 'SECTION',
-      message: 'Please provide a section heading for your Table Of Contents.'  
+      message: 'Please provide a section heading for your Table Of Contents.',
+      validate: sectionInput => {
+        if (sectionInput) {
+          return true;
+        } else {
+          console.log('Please provide a section heading for your Table Of Contents!');
+          return false;
+        }
+      }  
       },
       {
         type: 'confirm',
@@ -85,7 +121,15 @@ const promptToc = tocData => {
         {
         type: 'input',
         name: 'Installation Instructions',
-        message: 'Please provide detailed instructions on how to install and run your project.(Required)'  
+        message: 'Please provide detailed instructions on how to install and run your project.(Required)' ,
+        validate: installationInput => {
+          if (installationInput) {
+            return true;
+          } else {
+            console.log('Please provide Instructions!');
+            return false;
+          }
+        }  
         },
       ])
      
@@ -103,7 +147,15 @@ const promptToc = tocData => {
           {
           type: 'input',
           name: 'Usage',
-          message: 'Please provide detailed instructions on how to use your project.(Required)'  
+          message: 'Please provide detailed instructions on how to use your project.(Required)',
+          validate: usageInput => {
+            if(usageInput) {
+              return true;
+            } else {
+              console.log('Please provide instructions on how to use your project!');
+              return false;
+            }
+          }  
           },
         ])
        
@@ -121,8 +173,16 @@ const promptToc = tocData => {
           return inquirer.prompt([
             {
             type: 'input',
-            name: 'Usage',
-            message: 'Please provide detailed references and contributors to this project.(Required)'  
+            name: 'references',
+            message: 'Please provide detailed references and contributors to this project.(Required)',  
+            validate: referencesInput => {
+              if (referencesInput) {
+                return true;
+              } else {
+                console.log('Please add contributoprs or sources for this project.');
+                return false;
+              }
+            }
             },
           ])
          
@@ -141,8 +201,16 @@ const promptToc = tocData => {
               {
               type: 'input',
               name: 'Tests',
-              message: 'Please provide detailed explanation of any testing that was completed on this project.(Required)'  
-              },
+              message: 'Please provide detailed explanation of any testing that was completed on this project.(Required)',  
+              validate: testsInput => {
+                if (testsInput) {
+                  return true;
+                } else {
+                  console.log('Please provide tests or N/A!');
+                  return false;
+                }
+              }  
+            },
             ])
            
           }   
@@ -161,17 +229,41 @@ const promptToc = tocData => {
               {
               type: 'input',
               name: 'gitHub', 
-              message: 'Please enter your GitHub username.(Required)'  
+              message: 'Please enter your GitHub username.(Required)',
+              validate: githubInput => {
+                if (githubInput) {
+                  return true;
+                }else {
+                  console.log('You must enter your GitHub Username!');
+                  return false;
+                }
+              }  
               },
               {
                 type: 'input',
                 name: 'email address', 
-                message: 'Please enter a valid email address.(Required)'
+                message: 'Please enter a valid email address.(Required)',
+                validate: emailInput => {
+                  if (emailInput) {
+                    return true;
+                  } else {
+                    console.log('Enter a Valid email address!');
+                    return false;
+                  }
+                }
               },
               {
                 type: 'input',
                 name:'contact', 
-                message: 'How else can you be contacted with additional questions regarding your project?(Required)'
+                message: 'How else can you be contacted with additional questions regarding your project?(Required)',
+                validate: contactInput => {
+                  if (contactInput) {
+                    return true;
+                  } else {
+                    console.log('Please enter additional contact information!');
+                    return false;
+                  }
+                }
               }
 
             ])
