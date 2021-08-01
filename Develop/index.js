@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generatePage = require('./src/page-template.js');
+const generatePage = require('./page-template-README.md').default;
 const promptUser = () => {
   return inquirer.prompt
   ([
@@ -16,6 +16,7 @@ const promptUser = () => {
           console.log('Please enter your document type!');
           return false;
         }
+        console.log('test');
       }
     },
     
@@ -177,8 +178,8 @@ const promptToc = tocData => {
             type: 'input',
             name: 'references',
             message: 'Please provide detailed references and contributors to this project.(Required)',  
-            validate: referencesInput => {
-              if (referencesInput) {
+            validate: contributorInput => {
+              if (contributorInput) {
                 return true;
               } else {
                 console.log('Please add contributoprs or sources for this project.');
@@ -313,17 +314,17 @@ const promptToc = tocData => {
         .then(QuestionData => 
           console.log(QuestionData))
           .then(promptLicense)
-        .then(LicenseData => {
-          const pageMd = generatePage(LicenseData);
-        
-          fs.writeFile('./src/page-template.js', pageMd, err => {
-            if (err) throw new Error(err);
-     
-            console.log('Page created! Check out index.html in this directory to see it!');
-          });
-
-
+        .then(licenseData => {
+         console.log(licenseData);
+        })
+          
+        function writeFile(fileName, markdownData){
+          return fs.writeFile(path.join(process.cwd(),fileName),markdownData) 
         }
+        
+            
+
+        
         
         // fs.writeFile('index.html', generatePage(projectType, projectName), err => {
 //     if (err) throw err;
@@ -336,7 +337,7 @@ const promptToc = tocData => {
 
 // fs.writeFile('./index.html', pageHTML, err => {
 //     if (err) throw err;
-  
+    
 //     console.log('README complete! Check out index.html to see the output!');
 //   });
 
@@ -450,4 +451,4 @@ const promptToc = tocData => {
 // // TODO: Create a function to initialize app
 // //function initialize() {}
 
-        )
+        
