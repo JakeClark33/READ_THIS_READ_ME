@@ -7,21 +7,7 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 const questions = [
-    {
-      type: 'input',
-      name: 'Project Type',
-      message: 'What type of document are you creating?',
-      validate: nameInput => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log('Please enter your document type!');
-          return false;
-        }
-      }
-    },
-
-
+   
     {
       type: 'input',
       name: 'projectInput',
@@ -37,41 +23,41 @@ const questions = [
       },
 
 
-  //   {
-  //   type: 'input',
-  //   name: 'description',
-  //   message: 'Please provide a detailed description of your project. (Required)' ,
-  //   validate: descriptionInput => {
-  //     if (descriptionInput) {
-  //       return true;
-  //     } else {
-  //       console.log('Please provide a description of your project!');
-  //       return false;
-  //     }
-  //   }
-  // }, 
+    {
+    type: 'input',
+    name: 'descriptionInput',
+    message: 'Please provide a detailed description of your project. (Required)' ,
+    validate: descriptionInput => {
+      if (descriptionInput) {
+        return true;
+      } else {
+        console.log('Please provide a description of your project!');
+        return false;
+      }
+    }
+  }, 
     
 
-  //     {
-  //     type: 'input',
-  //     name: 'SECTION',
-  //     message: 'Please provide a section heading for your Table Of Contents.',
-  //     validate: sectionInput => {
-  //       if (sectionInput) {
-  //         return true;
-  //       } else {
-  //         console.log('Please provide a section heading for your Table Of Contents!');
-  //         return false;
-  //     }
-  //   }  
-  // },
+      {
+      type: 'input',
+      name: 'sectionInput',
+      message: 'Please provide a section heading for your Table Of Contents.',
+      validate: sectionInput => {
+        if (sectionInput) {
+          return true;
+        } else {
+          console.log('Please provide a section heading for your Table Of Contents!');
+          return false;
+      }
+    }  
+  },
 
 
-  //     {
-  //       type: 'confirm',
-  //       name: 'confirmAddHeading',
-  //       message: 'Would you like to enter another Table Of Contents heading?',
-  //       default: false
+      {
+        type: 'confirm',
+        name: 'confirmAddHeading',
+        message: 'Would you like to enter another Table Of Contents heading?',
+        default: false
       // .then (headingData => {
       //   tocData.push(headingData);
       //   if(sectionData.confirmAddHeading === true) {
@@ -80,43 +66,45 @@ const questions = [
       //   else {
       //     return tocData;
       //   }
-      // },
+      // }
+    //  )
+    },
 
 
-      // {
-      // type: 'input',
-      // name: 'Installation Instructions',
-      // message: 'Please provide detailed instructions on how to install and run your project.(Required)' ,
-      //   validate: installationInput => {
-      //     if (installationInput) {
-      //       return true;
-      //     } 
-      //     else {
-      //       console.log('Please provide Instructions!');
-      //       return false;
-      //     }
-      //   }  
-      // },
+      {
+      type: 'input',
+      name: 'installationInput',
+      message: 'Please provide detailed instructions on how to install and run your project.(Required)' ,
+        validate: installationInput => {
+          if (installationInput) {
+            return true;
+          } 
+          else {
+            console.log('Please provide Instructions!');
+            return false;
+          }
+        }  
+      },
    
 
-  //     {
-  //     type: 'input',
-  //     name: 'Usage',
-  //     message: 'Please provide detailed instructions on how to use your project.(Required)',
-  //     validate: usageInput => {
-  //       if(usageInput) {
-  //         return true;
-  //       } else {
-  //           console.log('Please provide instructions on how to use your project!');
-  //         return false;
-  //     }
-  //   }  
-  // },
+      {
+      type: 'input',
+      name: 'usageInput',
+      message: 'Please provide detailed instructions on how to use your project.(Required)',
+      validate: usageInput => {
+        if(usageInput) {
+          return true;
+        } else {
+            console.log('Please provide instructions on how to use your project!');
+          return false;
+      }
+    }  
+  },
       
 
       {
       type: 'input',
-      name: 'references',
+      name: 'contributorInput',
       message: 'Please provide detailed references and contributors to this project.(Required)',  
       validate: contributorInput => {
         if (contributorInput) {
@@ -131,7 +119,7 @@ const questions = [
         
       {
       type: 'input',
-      name: 'Tests',
+      name: 'testInput',
       message: 'Please provide detailed explanation of any testing that was completed on this project.(Required)',  
       validate: testsInput => {
         if (testsInput) {
@@ -146,7 +134,7 @@ const questions = [
   
       {
       type: 'input',
-      name: 'gitHub', 
+      name: 'githubInput', 
       message: 'Please enter your GitHub username.(Required)',
       validate: githubInput => {
         if (githubInput) {
@@ -161,7 +149,7 @@ const questions = [
 
       {
       type: 'input',
-      name: 'email address', 
+      name: 'emailInput', 
       message: 'Please enter a valid email address.(Required)',
       validate: emailInput => {
         if (emailInput) {
@@ -174,25 +162,25 @@ const questions = [
   },
 
 
-    //   {
-    //   type: 'input',
-    //   name:'contact', 
-    //   message: 'How else can you be contacted with additional questions regarding your project?(Required)',
-    //   validate: contactInput => {
-    //     if (contactInput) {
-    //       return true;
-    //     } else {
-    //         console.log('Please enter additional contact information!');
-    //       return false;
-    //     }
-    //   }
-    // },
+      {
+      type: 'input',
+      name:'contactInput', 
+      message: 'How else can you be contacted with additional questions regarding your project?(Required)',
+      validate: contactInput => {
+        if (contactInput) {
+          return true;
+        } else {
+            console.log('Please enter additional contact information!');
+          return false;
+        }
+      }
+    },
 
-    //   {
-    //   type: 'input',
-    //   name: 'License',
-    //   message: 'Which license is your project currently using?.(Required)',           
-    //   }
+      {
+      type: 'input',
+      name: 'license',
+      message: 'Which license is your project currently using?.(Required)',           
+      }
   
       
       ]
@@ -230,7 +218,7 @@ const questions = [
         function writeFile(fileName, markdownData){
           return fs.writeFileSync(path.join(process.cwd(),fileName),markdownData) 
         }
-        
+        console.log(writeFile);
         function start(){
           inquirer.prompt(questions)
           .then (inquirerResponses => {
