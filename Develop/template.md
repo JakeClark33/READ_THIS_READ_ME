@@ -5,9 +5,11 @@
   
 
   ## Description 
-  I have to readme
+  This project will be used to create a CLI README generator.
 
   ## Table of Contents 
+  [Title](#READ-ME)
+  [Description](#Description)
   [Installation](#Installation-Instructions)
   [Languages](#Languages)
   [Usage](#Usage)
@@ -17,28 +19,28 @@
   [License](#License)
 
   ## Installation Instructions
-  readyou
+  You will need to clone the repo from github. You can run from gitbash or NODE command line prompt. Enter Node index.js to begin the process of ccreating your readme.
 
   ## Languages
-  HTML,CSS
+  JavaScript,HTML,ES6,Bootstrap,Node
 
   ## Usage
-  this is it
+  Follow the prompts and enter the necessary information.
 
   ## Contributors
-  help
+  github, askBCS, TA's.
 
   ## Tests
-  I am almost done
+  no testing yet.
 
   ## Questions
-  hi
-  bye
-  later
+  JakeClark33
+  jakemclark79@gmail.com
+  N/A
 
 
   ## License
-  i hate you  
+  MIT  
   
   
         
