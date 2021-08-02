@@ -38,37 +38,10 @@ const questions = [
   }, 
     
 
-      {
-      type: 'input',
-      name: 'sectionInput',
-      message: 'Please provide a section heading for your Table Of Contents.',
-      validate: sectionInput => {
-        if (sectionInput) {
-          return true;
-        } else {
-          console.log('Please provide a section heading for your Table Of Contents!');
-          return false;
-      }
-    }  
-  },
+    
 
 
-      {
-        type: 'confirm',
-        name: 'confirmAddHeading',
-        message: 'Would you like to enter another Table Of Contents heading?',
-        default: false
-      // .then (headingData => {
-      //   tocData.push(headingData);
-      //   if(sectionData.confirmAddHeading === true) {
-      //     return promptToc(tocData);
-      //   }
-      //   else {
-      //     return tocData;
-      //   }
-      // }
-    //  )
-    },
+    
 
 
       {
@@ -84,6 +57,13 @@ const questions = [
             return false;
           }
         }  
+      },
+      {
+        type: 'checkbox',
+        name: 'languages',
+        message: 'Which languages did you use to build this project? (Check all that apply)',
+        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
+
       },
    
 

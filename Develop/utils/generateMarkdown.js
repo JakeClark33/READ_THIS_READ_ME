@@ -26,10 +26,21 @@ function generateMarkdown(markdownData) {
   ${markdownData.descriptionInput}
 
   ## Table of Contents 
-  ${markdownData.sectionInput}
+  [Title](#READ-ME)
+  [Description](#Description)
+  [Installation](#Installation-Instructions)
+  [Languages](#Languages)
+  [Usage](#Usage)
+  [Contributors](#Contributors)
+  [Tests](#Tests)
+  [Questions](#Questions)
+  [License](#License)
 
   ## Installation Instructions
   ${markdownData.installationInput}
+
+  ## Languages
+  ${markdownData.languages}
 
   ## Usage
   ${markdownData.usageInput}
